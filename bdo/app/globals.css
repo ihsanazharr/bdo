@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+/* Tailwind v4: daftarkan font dari next/font ke utility font-sans & font-mono */
+@theme inline {
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, monospace;
+}
+
+html,
+body {
+  height: 100%;
+  background: #000;
+  color: #e5e5e5;
+  overflow: hidden;
+}
+
+/* ---------- Leaflet reset ---------- */
+.leaflet-container {
+  background: #000;
+  font-family: inherit;
+  outline: none;
+}
+.leaflet-interactive,
+path.leaflet-interactive:focus {
+  outline: none;
+}
+
+/* Zoom control bergaya glass */
+.leaflet-bar {
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 16px !important;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+}
+.leaflet-bar a,
+.leaflet-bar a:hover {
+  width: 36px !important;
+  height: 36px !important;
+  line-height: 36px !important;
+  background: transparent !important;
+  color: #d4d4d4 !important;
+  border: none !important;
+  transition: all 300ms;
+}
+.leaflet-bar a:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #6ee7b7 !important;
+}
+.leaflet-bar a:first-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+.leaflet-right .leaflet-control {
+  margin-right: 24px;
+}
+.leaflet-bottom .leaflet-control-zoom {
+  margin-bottom: 8px;
+}
+.leaflet-bottom .leaflet-control-attribution {
+  margin-bottom: 8px;
+}
+
+/* Atribusi tetap ada (wajib), tapi dibuat samar */
+.leaflet-control-attribution {
+  background: transparent !important;
+  color: #525252 !important;
+  font-size: 10px;
+}
+.leaflet-control-attribution a {
+  color: #737373 !important;
+}
+
+/* ---------- Tooltip minimalis ---------- */
+.leaflet-tooltip.bdo-tooltip {
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(12px);
+  border: none;
+  border-radius: 12px;
+  padding: 9px 13px;
+  color: #f5f5f5;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+}
+.leaflet-tooltip.bdo-tooltip::before {
+  display: none;
+}
+.bdo-tip-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+}
+.bdo-tip-name {
+  font-size: 13px;
+  font-weight: 500;
+}
+.bdo-tip-score {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: #6ee7b7;
+}
+.bdo-tip-meta {
+  margin-top: 2px;
+  font-size: 11px;
+  color: #8a8a8a;
+}
+
+/* ---------- Scrollbar kustom ---------- */
+.sidebar-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
+.sidebar-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.sidebar-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+}
+.sidebar-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(110, 231, 183, 0.5);
+}
+
+/* ---------- Recharts ---------- */
+.recharts-polar-angle-axis-tick text {
+  font-family: var(--font-mono);
+}
+.recharts-radar-polygon {
+  filter: drop-shadow(0 0 8px rgba(52, 211, 153, 0.45));
+}
+.recharts-wrapper,
+.recharts-surface {
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* Terangkan basemap gelap agar jalan terbaca */
+.bdo-basemap {
+  filter: brightness(2.2) contrast(1.15) saturate(0.8);
+}
+.bdo-labels {
+  filter: brightness(1.6);
+}
